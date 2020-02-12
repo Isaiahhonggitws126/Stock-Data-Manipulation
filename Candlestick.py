@@ -21,6 +21,7 @@ df = web.DataReader(ticker, source, start, end)
 
 df['50ma'] = df['Close'].ewm(span=50, adjust=False).mean()
 df['100ma'] = df['Close'].ewm(span=100, adjust=False).mean()
+df['1000ma'] = df['Close'].ewm(span=1000, adjust=False).mean()
 # computes the moving average
 
 df = df[df.index > '2015-1-1']
@@ -40,6 +41,7 @@ ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m'))
 
 ax.plot(df.index, df['50ma'], color = 'white', label = '50ma')
 ax.plot(df.index, df['100ma'], color = 'orange', label = '100ma')
+ax.plot(df.index, df['1000ma'], color = 'blue', label = '1000ma')
 # plots the moving average lines
 
 
